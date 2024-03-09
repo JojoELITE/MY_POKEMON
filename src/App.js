@@ -4,8 +4,6 @@ import { useGetAllDataQuery } from "./data/RecoverData";
 import { Spin } from "antd";
 import Card from './components/Card';
 
-
-
 const App = () => {
 
   const { data, error, isLoading, refetch } = useGetAllDataQuery();
@@ -63,6 +61,7 @@ const App = () => {
       </div>
     );
   }
+
   return <div className=" p-10 max-w-[950px] mx-auto">
           <Suspense fallback={<Spin size="large" />}>{content}</Suspense>
         </div>;
