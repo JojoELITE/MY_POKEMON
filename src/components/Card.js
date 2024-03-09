@@ -24,7 +24,7 @@ const Card = ({ url }) => {
 
   const { data, error, isLoading } = useGetPokemonQuery(url.split("pokemon/")[1]);
 
-  const generateColor = () => {
+  const getRandomColor = () => {
     return styles[Math.floor(Math.random() * styles.length)];
   };
 
@@ -41,7 +41,7 @@ const Card = ({ url }) => {
   }
   
   return (
-    <div className={generateColor()}>
+    <div className={getRandomColor()}>
       <Link to={`/pokemon/${data.id}`}>
         <h2 className="font-bold text-3xl">{data.species.name}</h2>
         <div className="flex justify-between">

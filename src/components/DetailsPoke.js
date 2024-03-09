@@ -26,7 +26,7 @@ const DetailsPoke = () => {
     " mx-auto rounded-xl border-[2px] bg-teal-700 text-white",
     " mx-auto rounded-xl border-[2px] bg-cyan-700 text-white",
   ];
-  const generateColor = () => {
+  const getRandomColor = () => {
     return styles[Math.floor(Math.random() * styles.length)];
   };
   if (isLoading) {
@@ -42,7 +42,7 @@ const DetailsPoke = () => {
     return <p>Error: {error.message}</p>;
   }
   return (
-    <div className={generateColor()}>
+    <div className={getRandomColor()}>
       <div className="w-full p-4">
         <p className="w-full flex justify-between px-10">
         <BsArrowLeft

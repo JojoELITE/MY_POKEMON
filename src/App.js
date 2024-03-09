@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { Suspense, useState } from "react";
 import { useGetAllDataQuery } from "./data/RecoverData";
 import { Spin } from "antd";
