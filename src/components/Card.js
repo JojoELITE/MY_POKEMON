@@ -1,9 +1,13 @@
-import React, { lazy, Suspense } from "react";
+import React, { Suspense } from "react";
 import { Spin } from "antd";
 import { useGetPokemonQuery } from "../data/RecoverData";
 import { Link } from "react-router-dom";
 
-const Pokemon = lazy(() => import("./Pokemon"));
+
+const Pokemon = ({ src }) => {
+  return <img src={src} alt="" />;
+};
+
 
 const Card = ({ url }) => {
   const styles = [
