@@ -1,16 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import App from "./App";
+import DetailsPoke from "./components/DetailsPoke";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store/AppStorehouse";
-import Navigation from "./components/Navigation";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Navigation />
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/pokemon/:id" element={<DetailsPoke />} />
+        </Routes>
+      </Router>    
     </Provider>
   </React.StrictMode>
 );
