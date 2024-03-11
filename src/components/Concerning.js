@@ -19,19 +19,19 @@ const Concerning = ({ details, id }) => {
     <div className="w-[47%]">
       <div className="">
         <p className="flex justify-between mb-3">
-          <span className="text-slate-500">Species</span>
+          <span className="text-gray-500">Species</span>
           <span className="font-bold">{details.species.name}</span>
         </p>
         <p className="flex justify-between mb-3">
-          <span className="text-slate-500">Height</span>
+          <span className="text-gray-500">Height</span>
           <span className="font-bold">{details.height}</span>
         </p>
         <p className="flex justify-between mb-3">
-          <span className="text-slate-500">Weight</span>
+          <span className="text-gray-500">Weight</span>
           <span className="font-bold">{details.weight}</span>
         </p>
         <div className="flex justify-between mb-3">
-          <span className="text-slate-500">Abilities</span>
+          <span className="text-gray-500">Abilities</span>
           <p>
             {details.abilities.map((el, index) => {
               return (
@@ -46,15 +46,15 @@ const Concerning = ({ details, id }) => {
       <div className="w-full">
         <h2 className="font-bold text-lg">Breeding</h2>
         <p className="flex justify-between mb-3">
-          <span className="text-slate-500">Gender</span>
+          <span className="text-gray-500">Gender</span>
           <span className="font-bold">{gender_data.name}</span>
         </p>
         <p className="flex justify-between mb-3">
-          <span className="text-slate-500">Egg Groups</span>
+          <span className="text-gray-500">Egg Groups</span>
           <span className="font-bold">{data.egg_groups[0].name}</span>
         </p>
         <p className="flex justify-between mb-3">
-          <span className="text-slate-500">Egg Cycle</span>
+          <span className="text-gray-500">Egg Cycle</span>
           <span className="font-bold">{details.species.name}</span>
         </p>
       </div>

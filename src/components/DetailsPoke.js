@@ -14,7 +14,7 @@ const DetailsPoke = () => {
   const navigate = useNavigate();
 
   const { data, error, isLoading } = useGetPokemonQuery(`${id}`);
-  const label = ["About", "Base Stats", "Moves", "Evolution"];
+  const label = ["About", "Base Stats", "Moves"];
 
   const styles = [
     " mx-auto rounded-xl border-[2px] bg-red-700 text-white",
