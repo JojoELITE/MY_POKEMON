@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { useGetAllDataQuery } from "./data/RecoverData";
-import { Spin } from "antd";
 import Card from './components/Card';
+import { Spin } from "antd";
 
 const App = () => {
 
@@ -30,6 +30,7 @@ const App = () => {
           value={searchTerm}
           onChange={handleSearchChange}
         />
+        
 
       </div>
       {filteredPokemon.length > 0 ? (
@@ -61,11 +62,14 @@ const App = () => {
     );
   }
 
-  return <div className=" p-10 max-w-[950px] mx-auto">
-          <Suspense fallback={<Spin size="large" />}>{content}</Suspense>
-        </div>;
-
- 
+  return (
+    <div className="p-10 max-w-[950px] mx-auto">
+      <Suspense fallback={<Spin size="large" />}>
+        {content}
+      </Suspense>
+    </div>
+  );
+  
 };
 
 

@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-import { Spin } from "antd";
 import { useGetPokemonQuery } from "../data/RecoverData";
+import { Spin } from "antd";
 import { Link } from "react-router-dom";
 
 
@@ -27,43 +27,45 @@ const Card = ({ url }) => {
   const getRandomColor = () => {
     return styles[Math.floor(Math.random() * styles.length)];
   };
-
+  
   if (isLoading) {
     return (
-      <div className="w-[20%] mx-auto my-[40vh]">
-        <Spin size="large" />;
+      <div className="flex justify-center items-center h-screen">
+        <Spin size="large" />
       </div>
     );
   }
   
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return <p className="text-red-500">Error: {error.message}</p>;
   }
+  
   
   return (
     <div className={getRandomColor()}>
-      <Link to={`/pokemon/${data.id}`}>
+      <Link to={`/pokemon/${data.id}`} className="block p-4 rounded-lg">
         <h2 className="font-bold text-3xl">{data.species.name}</h2>
-        <div className="flex justify-between">
+        <div className="flex items-center justify-between mt-4">
           
-          <div className="mt-4">
+          <div>
             {data.abilities.map((el, index) => (
               <p className="" key={index}>
                 {el.ability.name}
               </p>
             ))}
           </div>
-
-          <div className="">
+  
+          <div>
             <Suspense fallback={<Spin size="small" />}>
               <Pokemon src={data.sprites.front_default} />
             </Suspense>
           </div>
-
+  
         </div>
       </Link>
     </div>
   );
+  
 };
 
 export default Card;

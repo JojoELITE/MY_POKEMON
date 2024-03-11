@@ -1,12 +1,12 @@
 import React, { Suspense } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useGetPokemonQuery } from "../data/RecoverData";
 import { Spin, Tabs } from "antd";
 import { BsArrowLeft } from "react-icons/bs";
 import { FaHeart } from 'react-icons/fa';
 import Concerning from "./Concerning";
 import Stats from "./Stats";
 import Moves from "./Moves";
-import { useGetPokemonQuery } from "../data/RecoverData";
 
 
 const DetailsPoke = () => {
@@ -44,53 +44,54 @@ const DetailsPoke = () => {
   return (
     <div className={getRandomColor()}>
       <div className="w-full p-4">
-        <p className="w-full flex justify-between px-10">
-        <BsArrowLeft
-          onClick={() => navigate(-1)}
-          style={{ cursor: 'pointer', color: 'gold' }}
-        />          
-        <FaHeart size={20} style={{ color: 'gold' }} />
-        </p>
+        <div className="w-full flex justify-between px-10">
+          <BsArrowLeft
+            onClick={() => navigate(-1)}
+            style={{ cursor: 'pointer', color: 'gold' }}
+          />          
+          <FaHeart size={20} style={{ color: 'gold' }} />
+        </div>
         <div className="px-10">
-          <h1 className="text-[30px] font-bold">{data.name}</h1>
+          <h1 className="text-3xl font-bold">{data.name}</h1>
           <div className="w-full flex justify-between">
-            <p className="text-[20px] font-bold">
-              {data.abilities.map((el, index) => {
-                return (
-                  <span
-                    className="mr-2 p-[3px] text-[0.7rem] text-black bg-slate-100 rounded-lg"
-                    key={index}>
-                    {el.ability.name}
-                  </span>
-                );
-              })}
-            </p>
+            <div className="text-lg font-bold">
+              {data.abilities.map((el, index) => (
+                <span
+                  className="mr-2 px-3 py-1 text-xs text-black bg-gray-100 rounded-lg"
+                  key={index}>
+                  {el.ability.name}
+                </span>
+              ))}
+            </div>
             <span className="font-bold">#00{data.id}</span>
           </div>
-          <div className="w-[200px] h-[200px] mx-auto">
+          <div className="w-48 h-48 mx-auto">
             <Suspense fallback={<Spin size="small" />}>
               <img src={data.sprites.front_default} alt="alt" className="w-full" />
             </Suspense>
           </div>
         </div>
       </div>
+  
       <div className="w-full p-4 bg-white rounded-t-[2rem]">
-        
-        
         <Tabs
           centered
-          defaultActiveKey={"1"}
+          defaultActiveKey="1"
           items={new Array(3).fill(null).map((_, i) => {
             const tabId = String(i + 1);
             let child = undefined;
-            if (label[i] === "About") {
-              child = <Concerning details={data} id={id} />;
-            }
-            if (label[i] === "Base Stats") {
-              child = <Stats details={data} />;
-            }
-            if (label[i] === "Moves") {
-              child = <Moves details={data} />;
+            switch (label[i]) {
+              case "About":
+                child = <Concerning details={data} id={id} />;
+                break;
+              case "Base Stats":
+                child = <Stats details={data} />;
+                break;
+              case "Moves":
+                child = <Moves details={data} />;
+                break;
+              default:
+                break;
             }
             return {
               label: label[i],
@@ -101,7 +102,7 @@ const DetailsPoke = () => {
         />
       </div>
     </div>
-  );
+  );  
 };
 
 export default DetailsPoke;

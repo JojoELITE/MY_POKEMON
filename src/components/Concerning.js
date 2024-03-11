@@ -45,8 +45,8 @@ const Concerning = ({ details, id }) => {
       </div>
       <div className="w-full">
         <h2 className="font-bold text-lg">Breeding</h2>
-        <p className="flex justify-between mb-3">
-          <span className="text-gray-500">Gender</span>
+        <p className="flex justify-between">
+          <span className="text-gray-500 py-2">Gender</span>
           <span className="font-bold">{gender_data.name}</span>
         </p>
         <p className="flex justify-between mb-3">
